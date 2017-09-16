@@ -9,7 +9,7 @@
 sudo apt-get install nodejs
 sudo npm install --global vue-cli
 sudo npm install -g npm
-npm install
+sudo npm install
 yarn install
 
 # serve with hot reload at localhost:8080
