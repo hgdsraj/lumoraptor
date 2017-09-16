@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import 'bulma/css/bulma.css'
+import VueFire from 'vuefire'
 
+Vue.use(VueFire)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -14,3 +16,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
