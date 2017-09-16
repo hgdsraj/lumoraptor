@@ -7,6 +7,7 @@
 ``` bash
 # install dependencies
 sudo apt-get install nodejs
+npm install --global vue-cli
 npm install -g npm
 npm install
 yarn install
