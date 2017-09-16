@@ -6,6 +6,8 @@
 
 ``` bash
 # install dependencies
+sudo apt-get install nodejs
+npm install -g npm
 npm install
 yarn install
 
