@@ -6,26 +6,29 @@
 
 ``` bash
 # install dependencies
-npm install
+sudo apt-get install nodejs
+sudo npm install --global vue-cli
+sudo npm install -g npm
+sudo npm install
 yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev
+sudo npm run dev
 
 # build for production with minification
-npm run build
+sudo npm run build
 
 # build for production and view the bundle analyzer report
-npm run build --report
+sudo npm run build --report
 
 # run unit tests
-npm run unit
+sudo npm run unit
 
 # run e2e tests
-npm run e2e
+sudo npm run e2e
 
 # run all tests
-npm test
+sudo npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
