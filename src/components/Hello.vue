@@ -1,53 +1,99 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <nav class="nav has-shadow">
+      <div class="container">
+        <div class="nav-left">
+          <a class="nav-item">
+            LumoRaptor
+          </a>
+          <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
+          <a class="nav-item is-tab is-hidden-mobile">Features</a>
+          <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
+          <a class="nav-item is-tab is-hidden-mobile">About</a>
+        </div>
+        <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+        <div class="nav-right nav-menu">
+          <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+          <a class="nav-item is-tab is-hidden-tablet">Features</a>
+          <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
+          <a class="nav-item is-tab is-hidden-tablet">About</a>
+          <a class="nav-item is-tab">
+            <figure class="image is-16x16" style="margin-right: 8px;">
+              <img src="http://bulma.io/images/jgthms.png">
+            </figure>
+            Profile
+          </a>
+          <a class="nav-item is-tab">Log out</a>
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  import Tooltip from 'vue-bulma-tooltip'
+  import { mapGetters, mapActions } from 'vuex'
+  export default {
+    name: 'hello',
+    components: {
+      Tooltip
+    },
+    props: {
+      show: Boolean
+    },
+    computed: mapGetters({
+      pkginfo: 'pkg',
+      sidebar: 'sidebar'
+    }),
+    methods: {
+      ...mapActions([
+        'toggleSidebar'
+      ]),
+      logout () {
+        this.$auth.logout({
+          redirect: 'Home',
+          makeRequest: false
+          // params: {},
+          // success: function () {},
+          // error: function () {},
+          // etc...
+        })
+      }
     }
   }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+<style lang="scss">
+  @import '~bulma/sass/utilities/variables';
+  .app-navbar {
+    position: fixed;
+    min-width: 100%;
+    z-index: 1024;
+    box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
+    .container {
+      margin: auto 10px;
+    }
+    .nav-right {
+      align-items: stretch;
+      align-items: stretch;
+      flex: 1;
+      justify-content: flex-end;
+      overflow: hidden;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+  .hero-brand {
+    .vue {
+      margin-left: 10px;
+      color: #36AC70;
+    }
+    .admin {
+      color: #28374B;
+    }
+  }
 </style>
