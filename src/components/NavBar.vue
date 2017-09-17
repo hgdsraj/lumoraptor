@@ -81,7 +81,6 @@
     }
     .nav-right {
       align-items: stretch;
-      align-items: stretch;
       flex: 1;
       justify-content: flex-end;
       overflow: hidden;

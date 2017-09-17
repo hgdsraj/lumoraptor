@@ -11,24 +11,25 @@
           <label class="label" for="txtPassword">Password</label>
           <input class="input" type="Password" id="txtPassword" v-model="authInput.txtPassword">
         </div>
-        <div class="dropdown is-hoverable">
-          <div class="dropdown-trigger">
-            <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu4">
-              <span>Choose a Health Status</span>
-            </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-            <div class="dropdown-content">
-              <input type="radio" id="ocd" value="OCD" v-model="health_status">
-              <label class="label" for="ocd">OCD</label>
-              <input type="radio" id="anxiety" value="Anxiety" v-model="health_status">
-              <label class="label" for="anxiety">Anxiety</label>
-              <input type="radio" id="depression" value="Depression" v-model="health_status">
-              <label class="label" for="depression">Depression</label>
-              <input type="radio" id="insomnia" value="Insomnia" v-model="health_status">
-              <label class="label" for="insomnia">Insomnia</label>
-            </div>
-          </div>
+        <div class="select">
+          <label class="label">Select your health status</label>
+          <select v-model="health_status" >
+            <option disabled value="">
+              Please Select Your Health Status
+            </option>
+            <option value="anxiety">
+              Anxiety
+            </option>
+            <option value="ocd">
+              Obsessive Compulsive Disorder
+            </option>
+            <option value="insomnia">
+              Insomnia
+            </option>
+            <option value="depression">
+              Depression
+            </option>
+          </select>
         </div>
         <br>
         <br>
@@ -38,6 +39,7 @@
         <button v-on:click="googleLogin()" class="button">
           Sign up with Google
         </button>
+        <p>{{ health_status }}</p>
         </div>
       </div>
     </div>
@@ -57,7 +59,6 @@
         health_status: ''
       }
     },
-    name: 'home',
     methods: {
       ...FirebaseActions
     }

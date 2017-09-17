@@ -15,6 +15,7 @@ export default {
   SignUp: function (event) {
     const email = this.authInput.txtEmail
     const pass = this.authInput.txtPassword
+    // const healthStatus = this.healthStatus
     Firebase.auth().createUserWithEmailAndPassword(email, pass).then(function (result) {
       console.log(result)
     }).catch(function (error) {
