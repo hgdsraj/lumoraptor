@@ -5,7 +5,7 @@
     </h2>
     <form id="form" v-on:submit.prevent="addMsg">
       <br> <br>
-      <textarea class="textarea" placeholder="Message" id="chat-message"></textarea>
+      <textarea class="textarea" placeholder="Message" id="chat-message" v-model="newMsg.text"></textarea>
       <br>
       <div class="container chat-buttons">
       <input id="submit-message" class="button is-primary" type="submit" value="Enter Message">
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-  import $ from 'jquery'
   import {db, firebaseApp} from '../FirebaseSettings'
   const healthStatus = String(location.href.substr(location.href.lastIndexOf('/') + 1))
   export default {
@@ -80,7 +79,6 @@
     },
     methods: {
       addMsg: function () {
-        this.newMsg.text = $('#chat-message').val()
         if (this.isValid) {
           this.newMsg.date = -1 * Date.now()
           db.ref(healthStatus).push(this.newMsg)
@@ -145,7 +143,9 @@
     min-width:0% !important;
     margin-left: auto;
     margin-right: auto;
-    border-style: groove;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
   }
 
   .content {
@@ -154,5 +154,9 @@
 
   .title {
     font-size: 100px;
+  }
+  .card-footer-item {
+    background-color: #00d1b2;
+    color: white;
   }
 </style>

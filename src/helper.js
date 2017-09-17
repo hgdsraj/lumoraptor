@@ -1,6 +1,6 @@
 import $ from 'jquery'
 $(document).ready(function () {
-  let enterForm = function (e, btn) {
+  function enterForm (e, btn) {
     if (e.keyCode === 13) {
       $(btn).click()
     }

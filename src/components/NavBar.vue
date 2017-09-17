@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar is-light has-shadow">
+    <nav class="navbar nav-color has-shadow">
       <div class="container">
         <div class="nav-left">
           <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
@@ -11,7 +11,7 @@
         <span></span>
         <span></span>
         <span></span>
-      </span>
+        </span>
         <div class="nav-right nav-menu">
           <router-link to="/profile" class="nav-item is-tab" v-if="user">Profile</router-link>
           <a class="nav-item is-tab" v-if="user" v-on:click="LogOut()">Log out</a>
@@ -83,5 +83,11 @@
   }
   .raptor {
     padding: 4px;
+  }
+  .nav-color {
+    background-color: #00d1b2;
+  }
+  a.nav-item {
+    color: #ffffff !important;
   }
 </style>
