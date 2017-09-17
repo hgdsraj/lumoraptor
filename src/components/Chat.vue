@@ -14,7 +14,7 @@
     </form>
     <hr>
     <div v-for="msg in msgs" :key="msg['.key']" >
-      <div v-if="!reportedUsers[msg.user.uid]" style="padding-bottom: 50px">
+      <div v-if="(reportedUsers && !reportedUsers[msg.user.uid]) || !reportedUsers" style="padding-bottom: 50px">
       <div class="card">
         <header>
           <p class="is-pulled-left">
