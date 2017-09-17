@@ -20,34 +20,39 @@
           <label class="label" for="txtPassword">Password</label>
           <input class="input" type="Password" id="txtPassword" v-model="authInput.txtPassword">
         </div>
-        <div class="select">
-          <label class="label">Select your health status</label>
-          <select v-model="userSettings.health_status" >
-            <option disabled value="">
-              Please Select Your Health Status
-            </option>
-            <option value="anxiety">
-              Anxiety
-            </option>
-            <option value="ocd">
-              Obsessive Compulsive Disorder
-            </option>
-            <option value="insomnia">
-              Insomnia
-            </option>
-            <option value="depression">
-              Depression
-            </option>
-          </select>
+        <div class="container">
+          <div class="select">
+            <label class="label">Select your health status</label>
+            <select v-model="userSettings.health_status" >
+              <option disabled value="">
+                Please Select Your Health Status
+              </option>
+              <option value="anxiety">
+                Anxiety
+              </option>
+              <option value="ocd">
+                Obsessive Compulsive Disorder
+              </option>
+              <option value="insomnia">
+                Insomnia
+              </option>
+              <option value="depression">
+                Depression
+              </option>
+            </select>
+          </div>
+          <br>
+          <br>
+          <br>
+          <button id="btnSignUp" v-on:click="SignUp()" class="button is-primary">
+          Submit
+          </button>
+          <button v-on:click="googleLogin()" class="button is-primary">
+            Sign up with Google
+          </button>
         </div>
         <br>
         <br>
-        <button id="btnSignUp" v-on:click="SignUp()" class="button">
-          Submit
-        </button>
-        <button v-on:click="googleLogin()" class="button">
-          Sign up with Google
-        </button>
         </div>
       </div>
     </div>

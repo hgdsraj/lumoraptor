@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="nav has-shadow">
+    <nav class="navbar is-light has-shadow">
       <div class="container">
         <div class="nav-left">
           <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
