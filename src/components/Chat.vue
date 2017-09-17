@@ -8,31 +8,36 @@
       <textarea class="textarea" v-model="newMsg.text" placeholder="Message" id="chat-message"></textarea>
       <br>
       <div class="container chat-buttons">
-      <input id="submit-message" class="button is-primary is-pulled-right" type="submit" value="Enter Message">
-      <router-link to="/chat" class="button is-primary is-pulled-left">Back</router-link>
+      <input id="submit-message" class="button is-primary" type="submit" value="Enter Message">
+      <router-link to="/chat" class="button is-primary">Back</router-link>
       </div>
     </form>
     <hr>
-    <div v-for="msg in msgs" :key="msg['.key']">
-      <div class="card" >
-        <div class="card-content">
-          <p class="title">
-            {{ msg.text }}
-          </p>
-          <p class="subtitle">
+    <div v-for="msg in msgs" :key="msg['.key']" style="padding-bottom: 50px">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
             {{ msg.user.email }}
           </p>
+          <a href="#" class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </span>
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p> {{ msg.text }}</p>
+            <br>
+            <p class="is-pulled-right">{{ msg.date }}</p>
+          </div>
         </div>
         <footer class="card-footer">
-          <p class="card-footer-item">
-            {{ msg.date }}
-          </p>
-          <p class="card-footer-item">
-            {{ newMsg.health_status }}
-          </p>
+          <a href="#" class="card-footer-item">Save</a>
+          <a href="#" class="card-footer-item">Edit</a>
+          <a href="#" class="card-footer-item">Delete</a>
         </footer>
       </div>
-      <br>
     </div>
   </div>
 
@@ -107,5 +112,21 @@
 <style>
   .chat-buttons {
     margin-bottom: 70px;
+  }
+
+  .textarea {
+    min-width: 0% !important;
+    width: 75%;
+    resize: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card {
+    width: 75%;
+    min-width:0% !important;
+    margin-left: auto;
+    margin-right: auto;
+
   }
 </style>
