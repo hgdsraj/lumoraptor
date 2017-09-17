@@ -5,7 +5,7 @@
     </h2>
     <form id="form" v-on:submit.prevent="addMsg">
       <br> <br>
-      <textarea class="textarea" v-model="newMsg.text" placeholder="Message" id="chat-message"></textarea>
+      <textarea class="textarea" placeholder="Message" id="chat-message"></textarea>
       <br>
       <div class="container chat-buttons">
       <input id="submit-message" class="button is-primary is-pulled-right" type="submit" value="Enter Message">
@@ -25,7 +25,7 @@
         </div>
         <footer class="card-footer">
           <p class="card-footer-item">
-            {{ msg.date }}
+            {{String(new Date(-1 * msg.date))}}
           </p>
           <p class="card-footer-item">
             {{ newMsg.health_status }}
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+  import $ from 'jquery'
   import {db, firebaseApp} from '../FirebaseSettings'
   const healthStatus = String(location.href.substr(location.href.lastIndexOf('/') + 1))
   export default {
@@ -55,7 +56,7 @@
     }),
 
     firebase: {
-      msgs: db.ref(healthStatus)
+      msgs: db.ref(healthStatus).orderByChild('date')
     },
 
     computed: {
@@ -76,16 +77,16 @@
     },
     methods: {
       addMsg: function () {
+        this.newMsg.text = $('#chat-message').val()
         if (this.isValid) {
-          let date = new Date()
-          this.newMsg.date = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+          this.newMsg.date = -1 * Date.now()
           db.ref(healthStatus).push(this.newMsg)
           this.newMsg.text = ''
         } else {
           alert('Error, please login')
         }
       },
-      change_health: function () {
+      changeHealth: function () {
         location.href = '#/chat/' + this.newMsg.health_status
         window.location.reload(false)
       }
@@ -95,6 +96,7 @@
         if (user) {
           this.newMsg.user.uid = user.uid
           this.newMsg.user.email = user.email
+          console.log('wow it changed dude!')
         } else {
           location.href = '/#/login'
         }
