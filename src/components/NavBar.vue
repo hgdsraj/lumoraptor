@@ -5,7 +5,7 @@
         <div class="nav-left">
           <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
           <router-link to="/chat" class="nav-item is-tab" v-if="user">Chat</router-link>
-          <img src="../assets/raptor.png">
+          <img src="../assets/raptor.png" class="raptor">
         </div>
         <span class="nav-toggle">
         <span></span>
@@ -83,5 +83,7 @@
       white-space: nowrap;
     }
   }
-
+  .raptor {
+    padding: 4px;
+  }
 </style>

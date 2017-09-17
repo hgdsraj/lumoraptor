@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <label class="label is-large">Sign Up!</label>
+    <label class="label is-large">Welcome to Lumoraptor, a chat platform for mental health communities!</label>
+    <label class="is-medium">Sign up by filling out the form below:</label>
+    <br>
+    <br>
     <div class="container">
       <div class="box">
         <div class="field">
