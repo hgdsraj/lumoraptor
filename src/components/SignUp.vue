@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <label class="label is-large">Sign Up!</label>
+    <label class="label is-large">Welcome to Lumoraptor, a chat platform for mental health communities!</label>
+    <label class="is-medium">Sign up by filling out the form below:</label>
+    <br>
+    <br>
     <div class="container">
       <div class="box">
         <div class="field">
@@ -20,34 +23,39 @@
           <label class="label" for="txtPassword">Password</label>
           <input class="input" type="Password" id="txtPassword" v-model="authInput.txtPassword">
         </div>
-        <div class="select">
-          <label class="label">Select your health status</label>
-          <select v-model="userSettings.health_status" >
-            <option disabled value="">
-              Please Select Your Health Status
-            </option>
-            <option value="anxiety">
-              Anxiety
-            </option>
-            <option value="ocd">
-              Obsessive Compulsive Disorder
-            </option>
-            <option value="insomnia">
-              Insomnia
-            </option>
-            <option value="depression">
-              Depression
-            </option>
-          </select>
+        <div class="container">
+          <div class="select">
+            <label class="label">Select your health status</label>
+            <select v-model="userSettings.health_status" >
+              <option disabled value="">
+                Please Select Your Health Status
+              </option>
+              <option value="anxiety">
+                Anxiety
+              </option>
+              <option value="ocd">
+                Obsessive Compulsive Disorder
+              </option>
+              <option value="insomnia">
+                Insomnia
+              </option>
+              <option value="depression">
+                Depression
+              </option>
+            </select>
+          </div>
+          <br>
+          <br>
+          <br>
+          <button id="btnSignUp" v-on:click="SignUp()" class="button is-primary">
+          Submit
+          </button>
+          <button v-on:click="googleLogin()" class="button is-primary">
+            Sign up with Google
+          </button>
         </div>
         <br>
         <br>
-        <button id="btnSignUp" v-on:click="SignUp()" class="button">
-          Submit
-        </button>
-        <button v-on:click="googleLogin()" class="button">
-          Sign up with Google
-        </button>
         </div>
       </div>
     </div>

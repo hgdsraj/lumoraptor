@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-
     <div class="container">
       <div class="box">
         <div class="field">
