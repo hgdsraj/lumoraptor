@@ -25,6 +25,7 @@
           <button v-on:click="googleLogin()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button">
             Google in
           </button>
+          <router-link to="/chatwindow">Go to ChatWindow</router-link>
         </div>
         <div class="mdl-cell mdl-cell--4-col"></div>
       </div>
