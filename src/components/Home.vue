@@ -1,6 +1,7 @@
 <template>
-  <div id="hello" class="hello">
-    Hello, World!
+  <div class="container">
+    <label class="label is-large">Welcome to Lumoraptor, thanks for signing in!</label>
+    <label class="label is-large">Click on the chat button in the upper left to get started!</label>
   </div>
 </template>
 
