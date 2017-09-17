@@ -5,6 +5,7 @@
         <div class="nav-left">
           <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
           <router-link to="/chat" class="nav-item is-tab" v-if="user">Chat</router-link>
+          <img src="../assets/raptor.png">
         </div>
         <span class="nav-toggle">
         <span></span>
