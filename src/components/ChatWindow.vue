@@ -1,7 +1,7 @@
 <!-- Vue component for chat window -->
 <template>
   <div class="chatwindow">
-    <div class="tile is-11.2">
+    <div class="tile is-11">
       <chat-input-field class="chatinputfield"></chat-input-field>
     </div>
   </div>
@@ -22,16 +22,4 @@
 
 <style lang="scss">
   @import '~bulma/sass/utilities/variables';
-  .chatwindow {
-    .tile {
-      position: fixed;
-      left: 8px;
-      width: 100%;
-      height: 91%;
-      padding: 10px;
-      box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
-      white-space: nowrap;
-      overflow-y: scroll;
-    }
-  }
 </style>

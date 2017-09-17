@@ -20,12 +20,13 @@
   @import '~bulma/sass/utilities/variables';
   .textarea {
     position: fixed;
-    max-width: 95%;
-    min-width: 96%;
+    min-width: 98%;
+    max-width: 98%;
     bottom: 0;
     margin: 10px;
     padding: 5px;
     box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
     background-color: turquoise;
+    resize: none;
   }
 </style>
