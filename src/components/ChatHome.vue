@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import {firebaseApp, db} from '../FirebaseSettings'
   const healthStatus = String(location.href.substr(location.href.lastIndexOf('/') + 1))
   export default {
     data: () => ({
@@ -36,6 +37,20 @@
         location.href = '#/chat/' + this.health_status
         window.location.reload(false)
       }
+    },
+    beforeCreate: function () {
+      firebaseApp.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          this.user = user
+          db.ref('user_settings/' + user.uid).orderByValue().on('value', function (snapshot) {
+            location.href = '#/chat/' + snapshot.val().health_status
+            window.location.reload(false)
+          })
+        } else {
+          this.user = null
+        }
+        this.$forceUpdate()
+      }.bind(this))
     }
 
   }
