@@ -3,11 +3,11 @@
     <nav class="nav has-shadow">
       <div class="container">
         <div class="nav-left">
-          <a class="nav-item">
+          <router-link to="/" class="nav-item">
             LumoRaptor
-          </a>
+          </router-link>
           <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-          <a class="nav-item is-tab is-hidden-mobile">Features</a>
+          <router-link to="/login" class="nav-item">Login</router-link>
           <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
           <a class="nav-item is-tab is-hidden-mobile">About</a>
         </div>
@@ -21,13 +21,13 @@
           <a class="nav-item is-tab is-hidden-tablet">Features</a>
           <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
           <a class="nav-item is-tab is-hidden-tablet">About</a>
-          <a class="nav-item is-tab">
+          <a class="nav-item is-tab" v-if="user">
             <figure class="image is-16x16" style="margin-right: 8px">
               <img src="http://bulma.io/images/jgthms.png">
             </figure>
             Profile
           </a>
-          <a class="nav-item is-tab">Log out</a>
+          <a class="nav-item is-tab" v-if="user" v-on:click="LogOut()">Log out</a>
         </div>
       </div>
     </nav>
@@ -37,12 +37,16 @@
 <script>
   import Tooltip from 'vue-bulma-tooltip'
   import { mapGetters, mapActions } from 'vuex'
-
+  import FirebaseActions from '../FirebaseActions'
+  import {firebaseApp} from '../FirebaseSettings'
   export default {
     name: 'navbar',
     components: {
       Tooltip
     },
+    data: () => ({
+      user: null
+    }),
     props: {
       show: Boolean
     },
@@ -53,7 +57,18 @@
     methods: {
       ...mapActions([
         'toggleSidebar'
-      ])
+      ]),
+      ...FirebaseActions
+    },
+    beforeCreate: function () {
+      firebaseApp.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          this.user = user
+        } else {
+          this.user = null
+        }
+        this.$forceUpdate()
+      }.bind(this))
     }
   }
 </script>

@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import 'bulma/css/bulma.css'
 import VueFire from 'vuefire'
-
+import './helper.js'
 Vue.use(VueFire)
 Vue.config.productionTip = false
 
@@ -14,6 +14,7 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  render: h => h(App)
 })
 
