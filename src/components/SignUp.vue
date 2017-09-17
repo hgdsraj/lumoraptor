@@ -4,16 +4,25 @@
     <div class="container">
       <div class="box">
         <div class="field">
+          <label class="label" for="firstName">First Name</label>
+          <input class="input" id="firstName" v-model="userSettings.first_name">
+        </div>
+        <div class="field">
+          <label class="label" for="lastName">Last Name</label>
+          <input class="input" id="lastName" v-model="userSettings.last_name">
+        </div>
+        <div class="field">
           <label class="label" for="txtEmail">Email</label>
           <input class="input" type="email" id="txtEmail" v-model="authInput.txtEmail">
         </div>
+
         <div class="field">
           <label class="label" for="txtPassword">Password</label>
           <input class="input" type="Password" id="txtPassword" v-model="authInput.txtPassword">
         </div>
         <div class="select">
           <label class="label">Select your health status</label>
-          <select v-model="health_status" >
+          <select v-model="userSettings.health_status" >
             <option disabled value="">
               Please Select Your Health Status
             </option>
@@ -39,7 +48,6 @@
         <button v-on:click="googleLogin()" class="button">
           Sign up with Google
         </button>
-        <p>{{ health_status }}</p>
         </div>
       </div>
     </div>
@@ -48,15 +56,19 @@
 <script>
   import Firebase from 'firebase'
   import FirebaseActions from '../FirebaseActions'
-  export default {
 
+  export default {
     data () {
       return {
         authInput: {
           txtEmail: '',
           txtPassword: ''
         },
-        health_status: ''
+        userSettings: {
+          health_status: '',
+          first_name: '',
+          last_name: ''
+        }
       }
     },
     methods: {

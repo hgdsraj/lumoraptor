@@ -1,4 +1,5 @@
 import Firebase from 'firebase'
+import {db} from './FirebaseSettings'
 let provider = new Firebase.auth.GoogleAuthProvider()
 export default {
   Login: function (event) {
@@ -16,7 +17,12 @@ export default {
     const email = this.authInput.txtEmail
     const pass = this.authInput.txtPassword
     // const healthStatus = this.healthStatus
+    const tempSettings = this.userSettings
+    let userSettings = {}
     Firebase.auth().createUserWithEmailAndPassword(email, pass).then(function (result) {
+      console.log()
+      userSettings[Firebase.auth().currentUser.uid] = tempSettings
+      db.ref('user_settings').set(userSettings)
       console.log(result)
     }).catch(function (error) {
       alert(error)
