@@ -2,8 +2,8 @@
 <template>
   <div class="chatinputfield">
     <div class="field">
-      <textarea class="textarea" placeholder="Type your message here!"></textarea>
-      <a class="button is-info">Send message</a>
+      <textarea class="textarea" v-model="message" placeholder="Type your message here!"></textarea>
+      <a class="button is-info">Send: {{ message }}</a>
     </div>
   </div>
 </template>
@@ -11,7 +11,12 @@
 <script>
   export default {
     name: 'chatinputfield',
-    data: {
+    data: function () {
+      return {
+        message: ''
+      }
+    },
+    methods: {
     }
   }
 </script>

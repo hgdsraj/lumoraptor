@@ -14,8 +14,9 @@
     components: {
       'chat-input-field': ChatInputField
     },
-    data: {
-
+    data: function () {
+      return {
+      }
     }
   }
 </script>

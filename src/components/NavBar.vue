@@ -8,7 +8,7 @@
           </router-link>
           <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
           <router-link to="/login" class="nav-item">Login</router-link>
-          <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
+          <router-link to="/chatwindow" class="nav-item">Chat</router-link>
           <a class="nav-item is-tab is-hidden-mobile">About</a>
         </div>
         <span class="nav-toggle">
