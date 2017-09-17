@@ -18,11 +18,9 @@ export default {
     const pass = this.authInput.txtPassword
     // const healthStatus = this.healthStatus
     const tempSettings = this.userSettings
-    let userSettings = {}
     Firebase.auth().createUserWithEmailAndPassword(email, pass).then(function (result) {
       console.log()
-      userSettings[Firebase.auth().currentUser.uid] = tempSettings
-      db.ref('user_settings').set(userSettings)
+      db.ref('user_settings').child(Firebase.auth().currentUser.uid).set(tempSettings)
       console.log(result)
     }).catch(function (error) {
       alert(error)

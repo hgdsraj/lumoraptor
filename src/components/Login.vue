@@ -14,9 +14,7 @@
         <button id="btnLogin" v-on:click="Login()" class="button is-primary">
           Log in
         </button>
-        <button id="btnSignUp" v-on:click="SignUp()"  class="button">
-          Sign Up
-        </button>
+        <router-link id=" btnSignUp" class="button" to="signup" >Sign Up</router-link>
         <button id="btnLogout" v-on:click="LogOut()" class="button" style="display:none">
           Log out
         </button>

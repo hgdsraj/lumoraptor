@@ -13,25 +13,27 @@
       </div>
     </form>
     <hr>
-    <div v-for="msg in msgs" :key="msg['.key']" style="padding-bottom: 50px">
+    <div v-for="msg in msgs" :key="msg['.key']" >
+      <div v-if="!reportedUsers[msg.user.uid]" style="padding-bottom: 50px">
       <div class="card">
         <header>
           <p class="is-pulled-left">
-            {{ msg.user.email + ':' }}
+            {{ msg.user.firstName }}
           </p>
           <p class="is-pulled-right">{{formattedDate(new Date(-1 * msg.date))}}</p>
         </header>
         <div class="card-content">
           <div class="content">
-            <p> {{ msg.text }}</p>
+            <p> {{ msg.text }} </p>
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Save</a>
+          <a class="card-footer-item" v-on:click="reportUser(msg.user.uid)">Report</a>
           <a href="#" class="card-footer-item">Edit</a>
-          <a href="#" class="card-footer-item">Delete</a>
+          <a class="card-footer-item" v-on:click="removeMessage(msg['.key'])">Delete</a>
         </footer>
       </div>
+    </div>
     </div>
   </div>
 
@@ -46,11 +48,13 @@
       newMsg: {
         user: {
           uid: '',
-          email: ''
+          email: '',
+          firstName: ''
         },
         text: '',
         value: '',
-        health_status: healthStatus
+        health_status: healthStatus,
+        reportedUsers: {}
       }
     }),
 
@@ -91,12 +95,27 @@
       },
       formattedDate: function (date) {
         return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
+      },
+      removeMessage: function (message) {
+        db.ref(healthStatus).child(message).remove()
+      },
+      reportUser: function (uid) {
+        db.ref('reported_users').child(uid).set(true)
       }
     },
     beforeCreate: function () {
       firebaseApp.auth().onAuthStateChanged(function (user) {
         if (user) {
+          this.user = user
           this.newMsg.user.uid = user.uid
+          db.ref('user_settings/' + user.uid).orderByValue().on('value', function (snapshot) {
+            this.newMsg.user.firstName = snapshot.val().first_name
+            console.log('Mein Name ist: ', snapshot.val().first_name)
+          }.bind(this)).bind(this)
+          this.reportedUsers = db.ref('reported_users').on('value', function (snapshot) {
+            console.log(snapshot.val())
+            this.reportedUsers = snapshot.val()
+          }.bind(this)).bind(this)
           this.newMsg.user.email = user.email
           console.log('wow it changed dude!')
         } else {
