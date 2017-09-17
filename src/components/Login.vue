@@ -18,7 +18,7 @@
           Log out
         </button>
         <button v-on:click="googleLogin()" class="button">
-          Google in
+          Google Login
         </button>
         </div>
       </div>

@@ -143,7 +143,9 @@
     min-width:0% !important;
     margin-left: auto;
     margin-right: auto;
-    border-style: groove;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
   }
 
   .content {
@@ -152,5 +154,9 @@
 
   .title {
     font-size: 100px;
+  }
+  .card-footer-item {
+    background-color: #00d1b2;
+    color: white;
   }
 </style>

@@ -25,6 +25,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    background-color: #e8e8e8;
   }
   .main-content {
     margin-top: 20px;
