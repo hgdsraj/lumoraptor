@@ -1,14 +1,17 @@
 import $ from 'jquery'
 $(document).ready(function () {
-  let enterLoginForm = function (e) {
+  let enterForm = function (e, btn) {
     if (e.keyCode === 13) {
-      $('#btnLogin').click()
+      $(btn).click()
     }
   }
   $('#txtEmail').keypress(function (e) {
-    enterLoginForm(e)
+    enterForm(e, '#btnLogin')
   })
   $('#txtPassword').keypress(function (e) {
-    enterLoginForm(e)
+    enterForm(e, '#btnLogin')
+  })
+  $('#chat-message').keypress(function (e) {
+    enterForm(e, '#submit-message')
   })
 })

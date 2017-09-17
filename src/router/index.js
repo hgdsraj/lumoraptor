@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Chat from '@/components/Chat'
 import SignUp from '@/components/SignUp'
+import ChatHome from '@/components/ChatHome'
 
 Vue.use(Router)
 
@@ -20,7 +21,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/chat',
+      path: '/chat/:health_status',
       name: 'Chat',
       component: Chat
     },
@@ -28,6 +29,11 @@ export default new Router({
       path: '/signup',
       name: 'Signup',
       component: SignUp
+    },
+    {
+      path: '/chat',
+      name: 'ChatHome',
+      component: ChatHome
     }
   ]
 })
