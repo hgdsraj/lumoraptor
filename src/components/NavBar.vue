@@ -4,7 +4,7 @@
       <div class="container">
         <div class="nav-left">
           <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
-          <router-link to="/chat" class="nav-item is-tab" v-if="user">Chat</router-link>
+          <router-link to="/chat" class="nav-item is-tab">Chat</router-link>
           <img src="../assets/raptor.png" class="raptor">
         </div>
         <span class="nav-toggle">
@@ -13,9 +13,7 @@
         <span></span>
       </span>
         <div class="nav-right nav-menu">
-          <a class="nav-item is-tab" v-if="user">
-            Profile
-          </a>
+          <router-link to="/profile" class="nav-item is-tab" v-if="user">Profile</router-link>
           <a class="nav-item is-tab" v-if="user" v-on:click="LogOut()">Log out</a>
           <router-link to="/login" class="nav-item is-tab" v-if="!user">Login</router-link>
           <router-link to="/signup" class="nav-item is-tab" v-if="!user">Sign Up</router-link>
