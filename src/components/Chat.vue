@@ -15,21 +15,15 @@
     <hr>
     <div v-for="msg in msgs" :key="msg['.key']" style="padding-bottom: 50px">
       <div class="card">
-        <header class="card-header">
-          <p>
-            {{ msg.user.email }}
+        <header>
+          <p class="is-pulled-left">
+            {{ msg.user.email + ':' }}
           </p>
-          <a href="#" class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <i class="fa fa-angle-down" aria-hidden="true"></i>
-      </span>
-          </a>
+          <p class="is-pulled-right">{{formattedDate(new Date(-1 * msg.date))}}</p>
         </header>
         <div class="card-content">
           <div class="content">
             <p> {{ msg.text }}</p>
-            <br>
-            <p class="is-pulled-right">{{formattedDate(new Date(-1 * msg.date))}}</p>
           </div>
         </div>
         <footer class="card-footer">
@@ -132,6 +126,14 @@
     min-width:0% !important;
     margin-left: auto;
     margin-right: auto;
+    border-style: groove;
+  }
 
+  .content {
+    font-size: 30px;
+  }
+
+  .title {
+    font-size: 100px;
   }
 </style>
