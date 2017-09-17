@@ -19,7 +19,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/chat',
+      path: '/chat/:health_status',
       name: 'Chat',
       component: Chat
     }
