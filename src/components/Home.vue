@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <label class="label is-large" v-if="!userId.empty()">Welcome to Lumoraptor, thanks for signing in!</label>
-    <label class="label is-large" v-if="!userId.empty()">Click on the chat button in the upper left to get started!</label>
+  <div id="hello" class="hello">
+    Hello, World!
+    {{ userId }}
   </div>
 </template>
 
@@ -10,7 +10,6 @@
   // import {auth} from 'firebase'
 
   export default {
-
     template: '#hello',
     name: 'hello',
     data: () => ({
