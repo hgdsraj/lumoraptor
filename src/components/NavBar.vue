@@ -3,13 +3,8 @@
     <nav class="nav has-shadow">
       <div class="container">
         <div class="nav-left">
-          <router-link to="/" class="nav-item">
-            LumoRaptor
-          </router-link>
-          <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-          <router-link to="/login" class="nav-item">Login</router-link>
-          <router-link to="/chat" class="nav-item">Chat</router-link>
-          <a class="nav-item is-tab is-hidden-mobile">About</a>
+          <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
+          <router-link to="/chat" class="nav-item is-tab" v-if="user">Chat</router-link>
         </div>
         <span class="nav-toggle">
         <span></span>
@@ -17,19 +12,12 @@
         <span></span>
       </span>
         <div class="nav-right nav-menu">
-          <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
-          <a class="nav-item is-tab is-hidden-tablet">Features</a>
-          <a class="nav-item is-tab is-hidden-tablet">Chat</a>
-          <a class="nav-item is-tab is-hidden-tablet">About</a>
           <a class="nav-item is-tab" v-if="user">
-            <figure class="image is-16x16" style="margin-right: 8px">
-              <img src="http://bulma.io/images/jgthms.png">
-            </figure>
             Profile
           </a>
           <a class="nav-item is-tab" v-if="user" v-on:click="LogOut()">Log out</a>
-          <router-link to="/login" class="nav-item" v-if="!user">Login</router-link>
-          <router-link to="/signup" class="nav-item" v-if="!user">Sign Up</router-link>
+          <router-link to="/login" class="nav-item is-tab" v-if="!user">Login</router-link>
+          <router-link to="/signup" class="nav-item is-tab" v-if="!user">Sign Up</router-link>
         </div>
       </div>
     </nav>

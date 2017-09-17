@@ -3,7 +3,7 @@
     <div class="select">
       <label class="label" for="health_status">Select your health status</label>
 
-      <select v-model="health_status" v-on:change="change_health" id="health_status" >
+      <select v-model="health_status" v-on:change="change_health" id="health_status">
         <option disabled value="">
           Please Select Your Health Status
         </option>
@@ -47,6 +47,8 @@
             window.location.reload(false)
           })
         } else {
+          location.href = '#/'
+          window.location.reload(false)
           this.user = null
         }
         this.$forceUpdate()
