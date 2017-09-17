@@ -2,10 +2,10 @@
   <div class="container">
     <div class="box">
       <label class="label is-large">Current User Settings</label>
-      <div class="box">
-        <div v-if="user_settings.first_name">First name: {{ user_settings.first_name }} </div>
-        <div v-if="user_settings.last_name">Last name: {{ user_settings.last_name }} </div>
-        <div v-if="user_settings.health_status">Mental Health Status: {{ user_settings.health_status }} </div>
+      <div class="box" v-if="latest_user_settings">
+        <div>First name: {{ latest_user_settings.first_name }} </div>
+        <div>Last name: {{ latest_user_settings.last_name }} </div>
+        <div>Mental Health Status: {{ latest_user_settings.health_status }} </div>
       </div>
 
       <div class="box">
@@ -55,18 +55,22 @@
         health_status: '',
         first_name: '',
         last_name: ''
+      },
+      latest_user_settings: {
+        health_status: '',
+        first_name: '',
+        last_name: ''
       }
     }),
     methods: {
       changeUserSettings: function () {
         if (this.isValid && this.isValidMentalHealthStatus) {
           var userRef = db.ref('user_settings/' + this.user.uid)
-          userRef.child('first_name').set(this.user_settings.first_name)
-          userRef.child('last_name').set(this.user_settings.last_name)
-          userRef.child('health_status').set(this.user_settings.health_status)
+          userRef.set(this.user_settings)
+          this.latest_user_settings = JSON.parse(JSON.stringify(this.user_settings))
           console.log('db changes complete!')
         } else {
-          alert('Error, please login')
+          alert('Error, First Name and Last Name cannot be blank')
         }
       }
     },
