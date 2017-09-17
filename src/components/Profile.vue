@@ -99,6 +99,7 @@
             this.user_settings.first_name = snapshot.val().first_name
             this.user_settings.last_name = snapshot.val().last_name
             this.user_settings.health_status = snapshot.val().health_status
+            this.latest_user_settings = JSON.parse(JSON.stringify(this.user_settings))
           }.bind(this)).bind(this)
         } else {
           this.user = null
