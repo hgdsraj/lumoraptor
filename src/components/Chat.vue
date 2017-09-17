@@ -1,31 +1,16 @@
 <template>
   <div id="chat" class="chat container">
+    <h2 class="title">
+      {{newMsg.health_status.charAt(0).toUpperCase() + newMsg.health_status.slice(1)}}
+    </h2>
     <form id="form" v-on:submit.prevent="addMsg">
-      <div class="select">
-        <label class="label" for="health_status">Select your health status</label>
-
-        <select v-model="newMsg.health_status" v-on:change="change_health" id="health_status" >
-          <option disabled value="">
-            Please Select Your Health Status
-          </option>
-          <option value="anxiety">
-            Anxiety
-          </option>
-          <option value="ocd">
-            Obsessive Compulsive Disorder
-          </option>
-          <option value="insomnia">
-            Insomnia
-          </option>
-          <option value="depression">
-            Depression
-          </option>
-        </select>
-      </div>
       <br> <br>
       <textarea class="textarea" v-model="newMsg.text" placeholder="Message" id="chat-message"></textarea>
       <br>
-      <input id="submit-message" class="button is-primary" type="submit" value="Enter Message">
+      <div class="container chat-buttons">
+      <input id="submit-message" class="button is-primary is-pulled-right" type="submit" value="Enter Message">
+      <router-link to="/chat" class="button is-primary is-pulled-left">Back</router-link>
+      </div>
     </form>
     <hr>
     <div v-for="msg in msgs" :key="msg['.key']">
@@ -120,7 +105,7 @@
 
 </script>
 <style>
-  .select {
-    margin-bottom: 100px;
+  .chat-buttons {
+    margin-bottom: 70px;
   }
 </style>
