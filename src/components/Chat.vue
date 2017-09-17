@@ -13,7 +13,8 @@
       </div>
     </form>
     <hr>
-    <div v-for="msg in msgs" :key="msg['.key']" style="padding-bottom: 50px">
+    <div v-for="msg in msgs" :key="msg['.key']" >
+      <div v-if="!reportedUsers[msg.user.uid]" style="padding-bottom: 50px">
       <div class="card">
         <header class="card-header">
           <p>
@@ -33,11 +34,12 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Save</a>
+          <a class="card-footer-item" v-on:click="reportUser(msg.user.uid)">Report</a>
           <a href="#" class="card-footer-item">Edit</a>
           <a class="card-footer-item" v-on:click="removeMessage(msg['.key'])">Delete</a>
         </footer>
       </div>
+    </div>
     </div>
   </div>
 
@@ -57,7 +59,8 @@
         },
         text: '',
         value: '',
-        health_status: healthStatus
+        health_status: healthStatus,
+        reportedUsers: {}
       }
     }),
 
@@ -101,6 +104,9 @@
       },
       removeMessage: function (message) {
         db.ref(healthStatus).child(message).remove()
+      },
+      reportUser: function (uid) {
+        db.ref('reported_users').child(uid).set(true)
       }
     },
     beforeCreate: function () {
@@ -111,6 +117,10 @@
           db.ref('user_settings/' + user.uid).orderByValue().on('value', function (snapshot) {
             this.newMsg.user.firstName = snapshot.val().first_name
             console.log('Mein Name ist: ', snapshot.val().first_name)
+          }.bind(this)).bind(this)
+          this.reportedUsers = db.ref('reported_users').on('value', function (snapshot) {
+            console.log(snapshot.val())
+            this.reportedUsers = snapshot.val()
           }.bind(this)).bind(this)
           this.newMsg.user.email = user.email
           console.log('wow it changed dude!')
