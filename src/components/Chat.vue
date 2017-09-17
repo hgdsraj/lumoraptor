@@ -53,9 +53,9 @@
         },
         text: '',
         value: '',
-        health_status: healthStatus,
-        reportedUsers: {}
-      }
+        health_status: healthStatus
+      },
+      reportedUsers: {}
     }),
 
     firebase: {
