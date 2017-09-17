@@ -9,11 +9,27 @@
 
 <script>
   import NavBar from './components/NavBar.vue'
-
+  import {db} from './FirebaseSettings'
   export default {
     name: 'app',
     components: {
       'app-navbar': NavBar
+    },
+    beforeCreate: function () {
+      let listRef = db.ref('presence')
+      let userRef = listRef.push()
+
+      let presenceRef = db.ref('.info').child('connected')
+      presenceRef.on('value', function (snap) {
+        if (snap.val()) {
+          // Remove ourselves when we disconnect.
+          userRef.onDisconnect().remove()
+          userRef.set(true)
+        }
+      })
+      listRef.on('value', function (snap) {
+        console.log('# of online users = ' + snap.numChildren())
+      })
     }
   }
 </script>
