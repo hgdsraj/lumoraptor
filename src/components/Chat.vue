@@ -156,7 +156,7 @@
     font-size: 100px;
   }
   .card-footer-item {
-    background-color: #00d1b2;
+    background-color: #00d1b2 !important;
     color: white;
   }
 </style>

@@ -3,7 +3,7 @@
     <nav class="navbar nav-color has-shadow">
       <div class="container">
         <div class="nav-left">
-          <router-link to="/" class="nav-item is-tab">LumoRaptor</router-link>
+          <router-link to="/" class="nav-item is-tab">SupportRaptor</router-link>
           <router-link to="/chat" class="nav-item is-tab">Chat</router-link>
           <img src="../assets/raptor.png" class="raptor">
         </div>
@@ -85,7 +85,7 @@
     padding: 4px;
   }
   .nav-color {
-    background-color: #00d1b2;
+    background-color: #00d1b2 !important;
   }
   a.nav-item {
     color: #ffffff !important;
